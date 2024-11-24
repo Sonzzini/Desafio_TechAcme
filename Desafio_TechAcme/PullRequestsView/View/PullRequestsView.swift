@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-struct RepositoryView: View {
+struct PullRequestsView: View {
 	
 	@Environment(\.dismiss) private var dismiss
 	
-	@StateObject var viewModel = Injection.shared.provideRepositoryViewModel()
+	@StateObject var viewModel = Injection.shared.providePullRequestViewModel()
 	
 	let repository: Repository
 	@State var pullRequestStateRequested: PullRequestStateRequest = .closed
@@ -36,8 +36,11 @@ struct RepositoryView: View {
 					}
 				}
 				.onChange(of: pullRequestStateRequested) { oldValue, newValue in
+					let request = PullRequestWebAccess.Request(owner: repository.owner.login,
+																			 repository: repository.name,
+																			 state: newValue.rawValue)
 					Task {
-						try await viewModel.getPullRequests(for: repository.owner.login, with: repository.name, state: newValue)
+						try await viewModel.getPullRequests(request: request)
 					}
 				}
 				Divider()
@@ -77,14 +80,20 @@ struct RepositoryView: View {
 		.background(.secondary.opacity(0.2))
 		
 		.refreshable {
+			let request = PullRequestWebAccess.Request(owner: repository.owner.login,
+																	 repository: repository.name,
+																	 state: pullRequestStateRequested.rawValue)
 			Task {
-				try await viewModel.getPullRequests(for: repository.owner.login, with: repository.name, state: pullRequestStateRequested)
+				try await viewModel.getPullRequests(request: request)
 			}
 		}
 		
 		.onAppear {
+			let request = PullRequestWebAccess.Request(owner: repository.owner.login,
+																	 repository: repository.name,
+																	 state: pullRequestStateRequested.rawValue)
 			Task {
-				try await viewModel.getPullRequests(for: repository.owner.login, with: repository.name, state: pullRequestStateRequested)
+				try await viewModel.getPullRequests(request: request)
 			}
 		}
 		
@@ -92,7 +101,7 @@ struct RepositoryView: View {
 }
 
 #Preview {
-	RepositoryView(repository:
+	PullRequestsView(repository:
 							Repository(id: 1,
 										  name: "Self-Talk",
 										  fullName: "Sonzzini/Self-Talk",

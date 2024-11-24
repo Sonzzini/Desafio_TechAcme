@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct HomeView: View {
+struct RepositoriesView: View {
 	
-	@StateObject var viewModel = Injection.shared.provideHomeViewModel()
+	@StateObject var viewModel = Injection.shared.provideRepositoryViewModel()
 	
 	private static let topId = "topId"
 	
@@ -30,7 +30,7 @@ struct HomeView: View {
 					ForEach(viewModel.repositories, id:\.htmlURL) { repository in
 						Divider()
 						NavigationLink {
-							RepositoryView(repository: repository)
+							PullRequestsView(repository: repository)
 						} label: {
 							RepositoryCard(repository: repository)
 						}
@@ -57,14 +57,21 @@ struct HomeView: View {
 			}
 		}
 		.refreshable {
-			viewModel.errorMessage = nil
+			let request = RepositoryWebAccess.Request(q: "language:Swift",
+																	sort: "stars",
+																	page: 1,
+																	order: nil)
 			Task {
-				try await viewModel.getRepositories()
+				try await viewModel.getRepositories(request: request)
 			}
 		}
 		.onAppear {
+			let request = RepositoryWebAccess.Request(q: "language:Swift",
+																	sort: "stars",
+																	page: 1,
+																	order: nil)
 			Task {
-				try await viewModel.getRepositories()
+				try await viewModel.getRepositories(request: request)
 			}
 		}
 
@@ -72,11 +79,11 @@ struct HomeView: View {
 }
 
 #Preview {
-	HomeView()
+	RepositoriesView()
 }
 
 
-extension HomeView {
+extension RepositoriesView {
 	private var topViewAnchor: some View {
 		Color.clear.opacity(0)
 			.id(Self.topId)

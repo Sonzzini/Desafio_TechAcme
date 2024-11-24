@@ -11,7 +11,7 @@ import SwiftUI
 struct Desafio_TechAcmeApp: App {
 	var body: some Scene {
 		WindowGroup {
-			HomeView()
+			RepositoriesView()
 		}
 	}
 }

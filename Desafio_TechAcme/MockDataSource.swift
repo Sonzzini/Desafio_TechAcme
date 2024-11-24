@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct MockDataSource: DataSourceProtocol {
+struct MockDataSource: RepositoryDataSourceProtocol, PullRequestDataSourceProtocol {
 	
-	func fetchRepository() async throws -> RepositoryResponse {
-		return RepositoryResponse(totalCount: 3,
+	func fetchRepository(request: RepositoryWebAccess.Request) async throws -> RepositoryWebAccess.Response {
+		return RepositoryWebAccess.Response(totalCount: 3,
 										  incompleteResults: false,
 										  items: [
 											Repository(id: 1,
@@ -49,7 +49,7 @@ struct MockDataSource: DataSourceProtocol {
 										  ])
 	}
 	
-	func fetchPullRequests(owner: String, repo: String, state: PullRequestStateRequest) async throws -> PullRequestResponse {
+	func fetchPullRequests(request: PullRequestWebAccess.Request) async throws -> PullRequestWebAccess.Response {
 		guard let url = Bundle.main.url(forResource: "MockPullRequestAPIResponse", withExtension: "json") else { throw URLError(.fileDoesNotExist) }
 		
 		let data = try Data(contentsOf: url)
@@ -57,7 +57,7 @@ struct MockDataSource: DataSourceProtocol {
 		let decoder = JSONDecoder()
 		decoder.dateDecodingStrategy = .iso8601
 		
-		return try decoder.decode(PullRequestResponse.self, from: data)
+		return try decoder.decode(PullRequestWebAccess.Response.self, from: data)
 	}
 	
 }

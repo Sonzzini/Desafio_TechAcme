@@ -8,5 +8,5 @@
 import Foundation
 
 protocol RepositoryUseCaseProtocol {
-	func execute(for owner: String, with repository: String, state: PullRequestStateRequest) async throws -> Result<[PullRequest], any Error>
+	func execute(request: RepositoryWebAccess.Request) async throws -> Result<[Repository], any Error>
 }

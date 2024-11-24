@@ -12,25 +12,32 @@ struct Injection {
 	
 	private init() {}
 	
-	func provideHomeViewModel() -> HomeViewModel {
-		let dataSource = RemoteDataSource()
-		let repository = ReposRepositoryImpl(remoteDataSource: dataSource)
-		let useCase = HomeUseCaseImpl(repository: repository)
-		return HomeViewModel(homeUseCase: useCase)
-	}
-	
-	func provideMockHomeViewModel() -> HomeViewModel {
-		let dataSource = MockDataSource()
-		let repository = ReposRepositoryImpl(remoteDataSource: dataSource)
-		let useCase = HomeUseCaseImpl(repository: repository)
-		return HomeViewModel(homeUseCase: useCase)
-	}
-	
 	func provideRepositoryViewModel() -> RepositoryViewModel {
-		let dataSource = RemoteDataSource()
-		let repository = ReposRepositoryImpl(remoteDataSource: dataSource)
+		let dataSource = RepositoryRemoteDataSource()
+		let repository = RepositoryRepositoryImpl(remoteDataSource: dataSource)
 		let useCase = RepositoryUseCaseImpl(repository: repository)
-		return RepositoryViewModel(repoUseCase: useCase)
+		return RepositoryViewModel(repositoryUseCase: useCase)
 	}
+	func provideMockRepositoryViewModel() -> RepositoryViewModel {
+		let dataSource = MockDataSource()
+		let repository = RepositoryRepositoryImpl(remoteDataSource: dataSource)
+		let useCase = RepositoryUseCaseImpl(repository: repository)
+		return RepositoryViewModel(repositoryUseCase: useCase)
+	}
+	
+	
+	func providePullRequestViewModel() -> PullRequestViewModel {
+		let dataSource = PullRequestRemoteDataSource()
+		let repository = PullRequestRepositoryImpl(remoteDataSource: dataSource)
+		let useCase = PullRequestUseCaseImpl(repository: repository)
+		return PullRequestViewModel(pullRequestUseCase: useCase)
+	}
+	func provideMockPullRequestViewmodel() -> PullRequestViewModel {
+		let dataSource = MockDataSource()
+		let repository = PullRequestRepositoryImpl(remoteDataSource: dataSource)
+		let useCase = PullRequestUseCaseImpl(repository: repository)
+		return PullRequestViewModel(pullRequestUseCase: useCase)
+	}
+	
 }
 
