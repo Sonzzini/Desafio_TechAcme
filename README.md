@@ -2,11 +2,10 @@
 A solução adotada para o desafio foi a utilização da arquitetura Clean Swift com interface em SwiftUI!
 
 ## Libs utilizadas
-SwiftUI
-
-WebKit
-
-Testing
+Os frameworks utilizados para este projeto foram:
+- SwiftUI
+- WebKit
+- Testing
 
 ## Arquitetura
 O projeto utiliza a arquitetura Clean Swift adaptada, com Views, ViewModels, UseCases, Repositories e DataSources. 
