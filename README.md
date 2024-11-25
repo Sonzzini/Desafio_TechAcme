@@ -30,7 +30,7 @@ Apesar de não ter a UI finalizada no projeto em *ViewCode*, através do estudo 
 Também atualizei a nomenclatura das classes e das Views, além de organizar as pastas para ter foco nas Views, para ter melhor coerência com cada funcionalidade e ser mais descritivo.
 
 ## Instruções para executar o projeto
-1. Se certifique de ter o Xcode instalado em seu Mac.
+1. Certifique-se que o Xcode esteja instalado em seu Mac.
 2. Clone/baixe ou clique em Code > Open with Xcode.
-3. Abra o arquivo no Xcode.
+3. Abra o arquivo do projeto no Xcode.
 4. Pressione **Cmd + R** para compilar e executar o projeto no simulador ou em um dispositivo conectado.
