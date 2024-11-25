@@ -23,7 +23,7 @@ Esta arquitetura foi escolhida pelos seguintes fatores:
 ## Escolhas feitas
 Arquitetura escolhida devido ao foco em chamadas de API e adesão aos princípios SOLID, principalmente ao *Single Responsibility Principle*.
 
-Havia implementado os modelos de dados sem a utilização do enum de WebAccess, mas após um estudo realizado durante a implementação deste desafio em [ViewCode](https://github.com/Sonzzini/Desafio_TechAcme_ViewCode) (não finalizado), atualizei este repositório para também implementar esta estrutura de requisição e resposta para o modelo.
+Inicialmente, havia implementado os modelos de dados sem a utilização da estrutura de um enum de WebAccess, mas após um estudo realizado durante a implementação deste desafio em [ViewCode](https://github.com/Sonzzini/Desafio_TechAcme_ViewCode) (não finalizado), atualizei este repositório para também implementar esta estrutura de requisição e resposta para o modelo.
 
 Iniciei a implementação deste desafio na segunda-feira, com uma primeira versão concluída na terça. Na quinta, criei um segundo repositório para implementar o desafio utilizando ViewCode e a arquitetura VIP, mas optei por polir este projeto devido à menor prática com ViewCode.
 
