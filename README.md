@@ -10,8 +10,7 @@ Os frameworks utilizados para este projeto foram:
 ## Arquitetura
 O projeto utiliza a arquitetura Clean Swift adaptada, com Views, ViewModels, UseCases, Repositories e DataSources. 
 
-A comunicação entre essas camadas é feita 
-através de protocols, garantindo:
+A comunicação entre essas camadas é feita através de *protocols*, garantindo:
 1. Desacoplamento
 2. Flexibilidade
 3. Escalabilidade
