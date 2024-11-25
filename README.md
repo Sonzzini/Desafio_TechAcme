@@ -21,11 +21,13 @@ Esta arquitetura foi escolhida pelos seguintes fatores:
 3. Integração com API
 
 ## Escolhas feitas
-Arquitetura escolhida devido ao foco em chamadas de API e adesão aos princípios SOLID, principalmente ao *Single Responsibility Principle*.
+O processo de desenvolvimento do desafio teve início na segunda-feira (18/11) com uma primeira versão concluída no dia seguinte. Nela, já estava definida a arquitetura Clean Swift, escolhida devido ao foco em chamadas de API e adesão aos princípios SOLID, principalmente ao *Single Responsibility Principle*.
 
-O projeto teve início na segunda-feira, com uma primeira versão concluída na terça. Na quinta, criei um [segundo repositório](https://github.com/Sonzzini/Desafio_TechAcme_ViewCode) para implementar o desafio utilizando *ViewCode* com a arquitetura VIP (UI não finalizada), mas optei por polir este projeto devido à menor prática com *ViewCode*.
+Com o objetivo de alcançar um diferencial no desafio, na quinta-feira (21/11) criei um [segundo repositório](https://github.com/Sonzzini/Desafio_TechAcme_ViewCode) para implementar o desafio utilizando *ViewCode* e a arquitetura VIP, mas optei por polir este projeto devido à minha menor prática com *ViewCode*.
 
-Inicialmente, havia implementado os modelos de dados sem a utilização da estrutura de um enum de WebAccess, mas após um estudo realizado durante a implementação deste desafio em *ViewCode*, atualizei este repositório para também implementar esta estrutura de requisição e resposta para o modelo.
+Apesar de não ter a UI finalizada no projeto em *ViewCode*, através do estudo realizado durante a sua implementação, pude aprimorar a versão em SwiftUI, que inicialmente não contava com modelos de dados com a utilização de uma estrutura de um enum de WebAccess para requisição e resposta da API, mas que foi implementado posteriormente.
+
+Também atualizei a nomenclatura das classes e das Views, além de organizar as pastas para ter foco nas Views, para ter melhor coerência com cada funcionalidade e ser mais descritivo.
 
 ## Instruções para executar o projeto
 1. Se certifique de ter o Xcode instalado em seu Mac.
